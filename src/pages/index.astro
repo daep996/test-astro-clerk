@@ -1,11 +1,19 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import {SignedOut, SignedIn, UserButton, SignInButton} from "@clerk/astro/components"
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="🔓 Tus retos personales">
+	<h1>Hola Astro</h1>
+	<div>
+		<SignedOut>
+			<SignInButton mode="modal" class="bg-sky-400 text-white px-2 py-1 rounded hover:bg-sky-500">Inicia Sesión</SignInButton>
+		</SignedOut>
+		<SignedIn>
+			<UserButton/>
+			<p>Ir a <a href="/retos" class="text-sky-400 underline">Retos</a></p>
+		</SignedIn>
+	</div>
 </Layout>
